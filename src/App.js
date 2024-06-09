@@ -3,7 +3,7 @@ import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
-import Users from "./components/User";
+import User from "./components/User";
 
 function App() {
   return (
