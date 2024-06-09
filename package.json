@@ -12,6 +12,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
+    "react-script": "^2.0.5",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -21,9 +22,6 @@
     "test": "jest",
     "eject": "react-scripts eject"
   },
-      "jest": {
-        "preset": "react-scripts"
-      },
   "eslintConfig": {
     "extends": [
       "react-app",
