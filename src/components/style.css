@@ -1,0 +1,109 @@
+/* src/MyComponent.css */
+body {
+    background-color: #FAEED1;
+    overflow: hidden;
+  }
+  .Home {
+    text-align: left;
+    margin-top: 0.5px;
+  }
+  .content-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
+    height: calc(100vh - 80px);
+  }
+  .text-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .text-container h1 {
+    font-size: 70px;
+    margin-top: -15px; 
+    color: #B99470;
+  }
+  .text-container h2 {
+    margin-bottom: 0; 
+  }
+  .text-container h3 {
+    font-size: large;
+    margin-top: -15px;
+  }
+  .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+  }
+  .btn {
+    color: black;
+    margin-bottom: 10px;
+  }
+  .navbar {
+    background-color: #B99470;
+    font-size: large;
+    font-weight: 400;
+    padding: 0.05rem 0.2rem;
+  }
+  .navbar .nav-item {
+    padding-left: 1rem;
+  }
+  .navbar .nav-item a {
+    height: auto;
+    color: black;
+    text-decoration: none;
+  }
+  .navbar .nav-item a:hover {
+    color: black;
+  }
+  .nav-item .active {
+    font-weight: 500;
+  }
+  .dropdown-toggle::after {
+    display: none;
+    content: none;
+  }
+  .dropdown-menu {
+    right: 0;
+    left: auto;
+  }
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+  .navbar-brand h2 {
+    color: black;
+    font-size: 1.5rem;
+  }
+  .navbar-brand img {
+    height: 70px;
+    margin-right: 5px;
+  }
+  .dropdown-item:hover {
+    background-color: #008081;
+  }
+  @media (max-width: 991.98px) {
+    .navbar-collapse {
+      width: 100%;
+      transition-timing-function: ease-out;
+    }
+    .nav-item .btn {
+      display: block;
+      margin: 0.5rem 0;
+    }
+    #input-search {
+      width: 12em;
+    }
+    #banner img {
+      height: 200px;
+      width: min-content;
+    }
+  }
+  
