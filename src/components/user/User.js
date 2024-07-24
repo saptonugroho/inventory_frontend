@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import axios from "axios";
 import {jwtDecode} from "jwt-decode";
-import { useNavigate } from 'react-router-dom';
-import "./style.css";
+import {useNavigate, Link} from "react-router-dom";
+import '../style.css';
 
-const Home = () => {
+function User() {
+
     const [name, setName] = useState('');
     const [token, setToken] = useState('');
     const [expire, setExpire] = useState('');
@@ -19,7 +20,7 @@ const Home = () => {
             const response = await axios.get('http://localhost:5000/token');
             setToken(response.data.accessToken);
             const decoded = jwtDecode(response.data.accessToken);
-            console.log(decoded)
+            //console.log(decoded)
             setName(decoded.username)
             setExpire(decoded.exp)
             
@@ -47,27 +48,37 @@ const Home = () => {
         return Promise.reject(error);
     });
 
-  return (
-    <>
+  const [users, SetUser] = useState([]);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+  const getUsers = async () => {
+    const response = await axios.get('http://localhost:5000/users');
+    SetUser(response.data)
+  }
+     
+    return (
+      <>
       <main>
-        <div className="Home">
-          <div className="container content-container">
-            <div className="text-container">
-              <h2><b>Selamat Datang, {name}</b></h2>
-              <h1><b>INVENTORY</b></h1>
-              <h3><b>Penyimpanan, Penerimaan, dan Pengambilan</b></h3>
-              <br />
-              <p>Kami menyediakan platform yang memudahkan Anda untuk mengelola stok barang dengan efisien dan akurat. Dapatkan kendali penuh atas persediaan Anda dan tingkatkan produktivitas bisnis dengan fitur-fitur canggih kami.</p>
+        <div className="container1">
+          <h1>User</h1>
+          <div className="user-cards">
+            {users.map((user, index) => (
+            <div className="user-card col-md-3 mb-4" data-user-id="{user.id}">
+              <img src="../image/01.png" alt="User Image" />
+              <p>Nama: {user.fullname}</p>
+              <p>Username : {user.username}</p>
+              <button className="delete-button">Hapus</button>
+              <Link to={`/updateuser/${user.id}`} rel="stylesheet" className="delete-button">Edit</Link>
             </div>
-            <div className="image-container">
-              <img src="/image/2.png" alt="Library Image" />
-            </div>
+            ))}
           </div>
+          <a href="/tambahuser" className="btn">Tambah User</a>
         </div>
       </main>
-      <script src="./dist/js/bootstrap.bundle.min.js"></script>
-    </>
-  );
-}
-
-export default Home;
+      </>
+    );
+  }
+  
+  export default User;

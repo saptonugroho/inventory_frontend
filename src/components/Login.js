@@ -1,6 +1,7 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -19,6 +20,24 @@ const Login = () => {
         } catch (error){
             if(error.response){
                 setMessage(error.response.data.message);
+            }
+        }
+    }
+
+    useEffect(() => {
+        refreshToken();
+    }, []);
+
+    const refreshToken = async () => {
+        try{
+            const response = await axios.get('http://localhost:5000/token');
+            if(response){
+                navigate('/dashboard');
+            }
+            
+        } catch (error){
+            if(error.response){
+                navigate('/');
             }
         }
     }

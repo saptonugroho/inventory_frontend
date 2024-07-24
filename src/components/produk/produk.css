@@ -1,0 +1,227 @@
+/* Reset margin dan padding */
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom styles untuk navbar */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Z-index yang besar untuk memastikan navbar tampil di atas konten lain */
+  animation: fadeInDown 0.5s; /* Efek animasi untuk navbar muncul */
+  background-color: #b99470; /* Warna latar belakang navbar ketika sticky */
+}
+
+/* Animasi untuk navbar muncul */
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.navbar {
+  padding: 10px 20px; /* Atur padding navbar */
+}
+
+.navbar-brand {
+  margin-right: 20px; /* Jarak antara logo dan menu */
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.brand-text {
+  margin-right: 20px; /* Atur jarak antara logo dan teks */
+  font-weight: bold;
+  font-family: "Girassol", sans-serif;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 15px; /* Atur jarak antara menu navigasi */
+}
+
+.user-icon {
+  width: 24px; /* Ukuran ikon user */
+  height: 24px;
+}
+
+.navbar-light .navbar-toggler-icon {
+  border: none; /* Menghilangkan border pada toggler icon */
+}
+
+.navbar-light .navbar-toggler {
+  padding: 0; /* Menghilangkan padding pada toggler */
+  outline: none; /* Hilangkan focus outline */
+}
+
+.navbar-light .navbar-toggler:focus {
+  box-shadow: none; /* Hilangkan shadow pada focus toggler */
+}
+
+/* Jumbotron Styles */
+.jumbotron {
+  background-color: #faeed1;
+  padding: 2rem; /* Padding untuk konten di dalam jumbotron */
+  margin-bottom: 0; /* Menghilangkan margin bawah jika tidak diperlukan */
+  height: 90vh; /* Tinggi jumbotron 90% viewport */
+  width: 100%; /* Lebar jumbotron 100% viewport */
+}
+
+/* Content Styles */
+.content {
+  margin-left: 20px; /* Margin kiri untuk content */
+}
+
+.display-3 {
+  font-family: "Dela Gothic One", cursive;
+  font-size: 20px; /* Ukuran font display-3 */
+  font-weight: bold;
+}
+
+.display-4 {
+  font-family: "Dela Gothic One", cursive;
+  font-size: 50px; /* Ukuran font display-4 */
+  font-weight: bold;
+  color: #b99470; /* Warna teks display-4 */
+}
+
+.operations {
+  margin-bottom: 20px; /* Margin bawah untuk operations */
+}
+
+.greeting {
+  margin-top: 20px; /* Margin atas untuk greeting */
+}
+
+.form {
+  max-width: 350px; /* Lebar maksimum form */
+  margin: 0 auto; /* Untuk membuatnya berada di tengah halaman */
+  background-color: #b99470;
+  padding: 50px; /* Padding agar form lebih luas */
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  height: 400px; /* Menentukan tinggi form */
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px; /* Margin bawah antara elemen form */
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%; /* Lebar input 100% */
+  padding: 8px; /* Padding di dalam input */
+  font-size: 16px; /* Ukuran font input */
+  border: 1px solid #000; /* Garis pinggir input */
+  background-color: #faeed1; /* Warna latar belakang input */
+  border-radius: 4px; /* Border radius input */
+}
+
+.form-group button {
+  padding: 10px 20px; /* Padding tombol */
+  background-color: #ded0b6; /* Warna latar belakang tombol */
+  color: #000; /* Warna teks tombol */
+  border: 1px solid #000; /* Garis pinggir tombol */
+  border-radius: 4px; /* Border radius tombol */
+  cursor: pointer; /* Kursor saat hover */
+  font-size: 16px; /* Ukuran font tombol */
+}
+
+.form-group button:hover {
+  background-color: #cbbea2; /* Warna latar belakang tombol saat hover */
+  border-color: #000; /* Warna garis pinggir tombol saat hover */
+}
+
+@media (max-width: 768px) {
+  .form {
+    height: auto; /* Tinggi otomatis untuk layar kecil */
+    padding: 30px; /* Padding lebih besar untuk layar kecil */
+  }
+}
+
+/* Image Container Styles */
+.image-container {
+  margin-left: 20px; /* Margin kiri untuk image container */
+}
+
+.img-fluid {
+  max-width: 90%; /* Lebar maksimum untuk gambar */
+  height: auto; /* Ketinggian otomatis sesuai proporsi */
+}
+
+@media (max-width: 992px) {
+  /* Penyesuaian untuk layar lebih kecil dari 992px (ukuran LG) */
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .navbar-expand-lg .navbar-collapse {
+    justify-content: flex-end; /* Navbar collapse diletakkan di kanan */
+  }
+
+  .navbar-brand,
+  .navbar-toggler {
+    margin-right: 0; /* Hilangkan margin kanan pada brand dan toggler */
+  }
+
+  .navbar-brand .logo-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar-brand .brand-text {
+    display: none; /* Sembunyikan teks brand pada layar kecil */
+  }
+
+  .jumbotron .content {
+    margin-left: 0; /* Set margin kiri content menjadi 0 pada layar kecil */
+  }
+
+  .jumbotron .image-container {
+    margin-left: 0; /* Set margin kiri image container menjadi 0 pada layar kecil */
+    margin-top: 20px; /* Beri jarak atas pada image container pada layar kecil */
+  }
+
+  .display-3 {
+    font-size: 16px; /* Ukuran font display-3 untuk layar kecil */
+  }
+
+  .display-4 {
+    font-size: 30px; /* Ukuran font display-4 untuk layar kecil */
+  }
+
+  .form {
+    max-width: 100%; /* Lebar form penuh pada layar kecil */
+  }
+}
+
+/*footer*/
+footer {
+  padding-top: 30px;
+  background-color: #b99470;
+}
+
+footer .container {
+  margin-bottom: 0; /* Menghilangkan margin bawah */
+}
+
+footer p,
+footer h6 {
+  margin: 0;
+}

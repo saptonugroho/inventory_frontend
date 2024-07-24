@@ -1,8 +1,14 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {jwtDecode} from "jwt-decode";
 
 const Navbar = () => {
+    const [name, setName] = useState('');
+    const [token, setToken] = useState('');
+    const [expire, setExpire] = useState('');
+    const [role, setRole] = useState(null);
     const navigate = useNavigate();
 
     const Logout = async(e) =>{
@@ -16,6 +22,44 @@ const Navbar = () => {
             }
         }
     }
+
+    useEffect(() => {
+      refreshToken();
+  }, []);
+
+  const refreshToken = async () => {
+      try{
+          const response = await axios.get('http://localhost:5000/token');
+          setToken(response.data.accessToken);
+          const decoded = jwtDecode(response.data.accessToken);
+          setName(decoded.username)
+          setExpire(decoded.exp)
+          setRole(decoded.role)
+          
+      } catch (error){
+          if(error.response){
+              navigate('/');
+          }
+      }
+  }
+
+  const axiosJWT = axios.create();
+
+  axiosJWT.interceptors.request.use(async(config) =>{
+      const currentDate = new Date();
+      if(expire * 1000 < currentDate.getTime()){
+          const response = await axios.get('http://localhost:5000/token');
+          config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+          const decoded = jwtDecode(response.data.accessToken);
+          setToken(response.data.accessToken);
+          setName(decoded.username)
+          setExpire(decoded.exp)
+      }
+      return config;
+  }, (error) =>{
+      return Promise.reject(error);
+  });
+
     
   return (
     <>
@@ -31,26 +75,28 @@ const Navbar = () => {
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
               <ul className="navbar-nav">
+              {role !== 2 && (
                 <li className="nav-item">
-                  <a href="user.html" className="nav-link">User</a>
+                  <a href="/user" className="nav-link">User</a>
+                </li>
+              )}
+                <li className="nav-item">
+                  <a href="/produk" className="nav-link">Product</a>
                 </li>
                 <li className="nav-item">
-                  <a href="product.html" className="nav-link">Product</a>
+                  <a href="/stokin" className="nav-link">Stock In</a>
                 </li>
                 <li className="nav-item">
-                  <a href="StockIn.html" className="nav-link">Stock In</a>
+                  <a href="/stokout" className="nav-link">Stock Out</a>
                 </li>
                 <li className="nav-item">
-                  <a href="StockOut.html" className="nav-link">Stock Out</a>
+                  <a href="/toko" className="nav-link">Toko</a>
                 </li>
                 <li className="nav-item">
-                  <a href="Toko.html" className="nav-link">Toko</a>
+                  <a href="/pemasok" className="nav-link">Pemasok</a>
                 </li>
                 <li className="nav-item">
-                  <a href="Pemasok.html" className="nav-link">Pemasok</a>
-                </li>
-                <li className="nav-item">
-                  <a href="pelanggan.html" className="nav-link">Pelanggan</a>
+                  <a href="/pelanggan" className="nav-link">Pelanggan</a>
                 </li>
               </ul>
               <div className="dropdown">
