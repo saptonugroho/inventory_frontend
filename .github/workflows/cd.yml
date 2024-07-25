@@ -6,13 +6,9 @@ name: CD
 on:
   push:
     branches: [ "master" ]
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
-    
     steps:
     - uses: actions/checkout@v2
     - name: Deploy using ssh
@@ -27,4 +23,4 @@ jobs:
            git pull origin master
            git status
            npm install --only=prod
-           pm2 restart frontend
+           pm2 restart npm
