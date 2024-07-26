@@ -26,7 +26,7 @@ function UpdateUser() {
 
     const refreshToken = async () => {
         try{
-            const response = await axios.get('http://localhost:5000/token');
+            const response = await axios.get('http://159.65.137.143:5000/token');
             setToken(response.data.accessToken);
             const decoded = jwtDecode(response.data.accessToken);
             console.log(decoded)
@@ -45,7 +45,7 @@ function UpdateUser() {
     axiosJWT.interceptors.request.use(async(config) =>{
         const currentDate = new Date();
         if(expire * 1000 < currentDate.getTime()){
-            const response = await axios.get('http://localhost:5000/token');
+            const response = await axios.get('http://159.65.137.143:5000/token');
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             const decoded = jwtDecode(response.data.accessToken);
             setToken(response.data.accessToken);
@@ -60,7 +60,7 @@ function UpdateUser() {
     const updatetoko = async(e) =>{
         e.preventDefault();
         try{
-            await axios.patch(`http://localhost:5000/toko/${id}`,{
+            await axios.patch(`http://159.65.137.143:5000/toko/${id}`,{
                 nama,alamat,nohp
             });
             navigate('/toko');
@@ -72,7 +72,7 @@ function UpdateUser() {
       getTokobyid();
     }, [])
     const getTokobyid = async () => {
-      const response = await axios.get(`http://localhost:5000/toko/${id}`)
+      const response = await axios.get(`http://159.65.137.143:5000/toko/${id}`)
       setnama(response.data.nama);
       setalamat(response.data.alamat);
       setnohp(response.data.nohp);

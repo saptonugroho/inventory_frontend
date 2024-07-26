@@ -21,7 +21,7 @@ function Pelanggan() {
 
   const refreshToken = async () => {
       try{
-          const response = await axios.get('http://localhost:5000/token');
+          const response = await axios.get('http://159.65.137.143:5000/token');
           setToken(response.data.accessToken);
           const decoded = jwtDecode(response.data.accessToken);
           console.log(decoded)
@@ -40,7 +40,7 @@ function Pelanggan() {
   axiosJWT.interceptors.request.use(async(config) =>{
       const currentDate = new Date();
       if(expire * 1000 < currentDate.getTime()){
-          const response = await axios.get('http://localhost:5000/token');
+          const response = await axios.get('http://159.65.137.143:5000/token');
           config.headers.Authorization = `Bearer ${response.data.accessToken}`;
           const decoded = jwtDecode(response.data.accessToken);
           setToken(response.data.accessToken);
@@ -58,7 +58,7 @@ useEffect(() => {
   getPelanggan();
 }, []);
 const getPelanggan = async () => {
-  const response = await axios.get('http://localhost:5000/pelanggan');
+  const response = await axios.get('http://159.65.137.143:5000/pelanggan');
   SetPelanggan(response.data)
   console.log(response)
 }

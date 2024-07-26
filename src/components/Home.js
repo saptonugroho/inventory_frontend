@@ -19,7 +19,6 @@ const Home = () => {
             const response = await axios.get('http://localhost:5000/token');
             setToken(response.data.accessToken);
             const decoded = jwtDecode(response.data.accessToken);
-            console.log(decoded)
             setName(decoded.username)
             setExpire(decoded.exp)
             

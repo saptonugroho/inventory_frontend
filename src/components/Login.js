@@ -12,7 +12,7 @@ const Login = () => {
     const Auth = async(e) =>{
         e.preventDefault();
         try{
-            await axios.post('http://localhost:5000/users', {
+            await axios.post('http://159.65.137.143:5000/users', {
                 username: username,
                 password: password
             });
@@ -30,7 +30,7 @@ const Login = () => {
 
     const refreshToken = async () => {
         try{
-            const response = await axios.get('http://localhost:5000/token');
+            const response = await axios.get(`http://159.65.137.143:5000/token`);
             if(response){
                 navigate('/dashboard');
             }
@@ -41,7 +41,8 @@ const Login = () => {
             }
         }
     }
-
+    const apiHost = process.env.REACT_APP_API;
+    console.log('API Host:', apiHost);
   return (
     <section className="hero has-background-grey-light is-fullheight is-fullwidth">
         <div className="hero-body">
